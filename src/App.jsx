@@ -1,5 +1,5 @@
 import { useState } from 'react'
-
+import Card from './Card.jsx'
 
 
 function App() {
@@ -7,7 +7,7 @@ function App() {
 
   return (
     <>
-
+      <Card />
     </>
   )
 }
