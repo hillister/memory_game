@@ -8,8 +8,9 @@ function Card(){
             try {
                 const pokeApi = await fetch(`https://pokeapi.co/api/v2/pokemon`)
                 const pokeData = await pokeApi.json()
-
-                setPokemon(pokeData.results[0]);
+                const randomIndex = Math.floor(Math.random() * 20);
+                console.log(randomIndex)
+                setPokemon(pokeData.results[randomIndex]);
             } catch(err){
                 console.log('Error with API')
             }
@@ -20,8 +21,13 @@ function Card(){
 
     return(
         <div className="container">
-            <img></img>
-            <h3></h3>
+            {pokemon ? (
+                <>
+                <h3>{pokemon.name}</h3>
+                </>
+            ) : (
+                <p>Loading...</p>
+            )}
         </div>
     )
 }
