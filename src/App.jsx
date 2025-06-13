@@ -4,17 +4,25 @@ import Card from './Card.jsx'
 
 function App() {
   const [pokemon, setPokemon] = useState(null)
+  const [availablePokemon, setAvailablePokemon] = useState([])
 
   useEffect(() => {
       async function getPokemon(){
           try {
               const pokeApi = await fetch(`https://pokeapi.co/api/v2/pokemon`)
               const pokeData = await pokeApi.json()
-              const randomIndex = Math.floor(Math.random() * 20);
               const pokemonList = pokeData.results
-              setPokemon(pokemonList[randomIndex]);
+
+                const randomIndex = Math.floor(Math.random() * pokemonList.length);
+                const selected = pokemonList[randomIndex]
+
+                const updatedList = pokemonList.filter((_, index) => index !== randomIndex);
+
+                setPokemon(selected)
+                setAvailablePokemon(updatedList);
+                console.log(updatedList)
           } catch(err){
-              console.log('Error with API')
+              console.log('Error with API', err)
           }
       }
 
