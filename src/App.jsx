@@ -11,8 +11,8 @@ function App() {
               const pokeApi = await fetch(`https://pokeapi.co/api/v2/pokemon`)
               const pokeData = await pokeApi.json()
               const randomIndex = Math.floor(Math.random() * 20);
-              console.log(randomIndex)
-              setPokemon(pokeData.results[randomIndex]);
+              const pokemonList = pokeData.results
+              setPokemon(pokemonList[randomIndex]);
           } catch(err){
               console.log('Error with API')
           }

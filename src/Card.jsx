@@ -16,15 +16,21 @@ function Card({pokemon}){
   
         getPokemonImage();
     }, []);
+
+    const capitaliseName = 
+        pokemon.name.charAt(0).toUpperCase()
+        + pokemon.name.slice(1)
+
     return(
-        <>
-            <h3>{pokemon.name}</h3>
+        <div className="cardContainer">
             {pokemonImg ? (
                 <img src={pokemonImg} alt={pokemon.name} />
             ) : (
                 <p>Loading image...</p>
             )}
-        </>
+            
+            <h3>{capitaliseName}</h3>
+        </div>
     )
 }
 
